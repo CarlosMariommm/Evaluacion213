@@ -5,7 +5,6 @@ import authMiddleware from '../middlewares/auth.middleware.js';
 
 const router = Router();
 
-// Rutas de autenticación y registro
 router.post('/register', upload.single('profilePhoto'), patientController.register);
 router.post('/verify-email', patientController.verifyEmail);
 router.post('/login', patientController.login);
@@ -13,7 +12,6 @@ router.post('/logout', patientController.logout);
 router.post('/forgot-password', patientController.forgotPassword);
 router.post('/reset-password', patientController.resetPassword);
 
-// Rutas CRUD protegidas (encadenadas con .route() según reglas)
 router.route('/')
     .get(authMiddleware, patientController.getAll);
 
