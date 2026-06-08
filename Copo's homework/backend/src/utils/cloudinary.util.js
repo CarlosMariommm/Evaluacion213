@@ -10,7 +10,6 @@ cloudinary.config({
 
 export const uploadImage = async (fileBuffer, folder) => {
     return new Promise((resolve, reject) => {
-        //#1- Utilizo upload_stream para enviar el buffer de multer a Cloudinary
         const stream = cloudinary.uploader.upload_stream(
             { folder: folder },
             (error, result) => {
@@ -27,7 +26,6 @@ export const uploadImage = async (fileBuffer, folder) => {
 
 export const deleteImage = async (publicId) => {
     try {
-        //#2- Elimino la imagen utilizando su public_id
         await cloudinary.uploader.destroy(publicId);
     } catch (error) {
         console.log("error" + error);
